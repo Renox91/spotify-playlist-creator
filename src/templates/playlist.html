@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="static/style.css" rel="stylesheet">
+    <title>Hello, world!</title>
+  </head>
+
+  <body>
+    <form method="POST" action="/creation">
+      <button type="submit" class="btn btn-primary">Create the playlist</button>
+      <div class="container">
+          <div class="row">
+          {% for item in data %}
+            <div class="col-sm mb-5">
+              <div class="card" style="width: 18rem;">
+                  <img src="{{item['url_img']}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{item["name"]}}</h5>
+                    <p class="card-text">Genres de l'artiste : {{item["genres"]}}</p>
+                    Followers : {{item["followers"]}}
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name = "mycheckbox" value="{{item['id']}}" id={{loop.index}} checked>
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Insérer
+                      </label>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+      </div>
+  </form>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+  </body>
+</html>
